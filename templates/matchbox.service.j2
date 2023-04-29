@@ -3,8 +3,8 @@ Description=Matchbox Server
 Documentation=https://github.com/poseidon/matchbox
 
 [Service]
-User=matchbox
-Group=matchbox
+User={{ matchbox_user }}
+Group={{ matchbox_group }}
 EnvironmentFile=-/etc/sysconfig/matchbox
 ExecStart={{ matchbox_bin_dir }}/matchbox
 
