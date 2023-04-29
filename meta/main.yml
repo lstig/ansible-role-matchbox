@@ -1,0 +1,18 @@
+---
+dependencies: []
+
+galaxy_info:
+  role_name: matchbox
+  namespace: lstig
+  author: Luke Stigdon
+  description: "matchbox role"
+  license: MIT
+  min_ansible_version: "2.10"
+  # https://galaxy.ansible.com/api/v1/platforms/
+  platforms:
+    - name: EL
+      versions:
+        - "8"
+        - "9"
+  galaxy_tags:
+    - matchbox
