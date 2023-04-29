@@ -13,7 +13,7 @@ Any pre-requisites that may not be covered by Ansible itself or the role should 
 Role Variables
 --------------
 
-[vars/main.yml](vars/main.yml)
+[defaults](defaults/main.yml)
 
 Dependencies
 ------------
