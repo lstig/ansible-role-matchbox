@@ -16,3 +16,9 @@ galaxy_info:
         - "9"
   galaxy_tags:
     - matchbox
+    - pxe
+    - ipxe
+    - coreos
+    - flatcar
+    - ignition
+    - poseidon
