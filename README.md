@@ -3,7 +3,7 @@ Ansible Role `matchbox`
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/lstig/ansible-role-matchbox/blob/main/LICENSE)
 
-Install and manage matchbox.
+Install and manage [matchbox](https://matchbox.psdn.io).
 
 Requirements
 ------------
