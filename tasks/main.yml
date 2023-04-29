@@ -1,2 +1,15 @@
 ---
-# tasks file for matchbox
+- name: Create matchbox systemd service file.
+  ansible.builtin.template:
+    src: matchbox.service.j2
+    dest: /etc/systemd/system/matchbox.service
+    owner: root
+    group: root
+    mode: '0444'
+    validate: /usr/bin/systemd-analyze verify %s
+
+- name: Ensure matchbox is started and enabled (if configured).
+  ansible.builtin.service:
+    name: "{{ matchbox_daemon }}"
+    state: "{{ matchbox_state }}"
+    enabled: "{{ matchbox_enabled }}"

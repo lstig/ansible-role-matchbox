@@ -1,0 +1,16 @@
+[Unit]
+Description=Matchbox Server
+Documentation=https://github.com/poseidon/matchbox
+
+[Service]
+User=matchbox
+Group=matchbox
+EnvironmentFile=-/etc/sysconfig/matchbox
+ExecStart={{ matchbox_bin_dir }}/matchbox
+
+# systemd.exec
+ProtectHome=yes
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target

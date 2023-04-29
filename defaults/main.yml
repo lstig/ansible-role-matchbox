@@ -1,2 +1,14 @@
 ---
-# defaults file for matchbox
+matchbox_user: matchbox
+matchbox_group: matchbox
+
+matchbox_version: "v0.10.0"
+
+matchbox_daemon: matchbox
+matchbox_state: started
+matchbox_enabled: true
+
+matchbox_bin_dir: /usr/local/bin
+matchbox_data_dir: /var/lib/matchbox
+matchbox_assets_dir: "{{ matchbox_data_dir }}/assets"
+matchbox_config_dir: /etc/matchbox
