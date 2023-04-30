@@ -28,4 +28,5 @@ Example Playbook
 - hosts: servers
   roles:
     - role: lstig.matchbox
+      become: yes
 ```
