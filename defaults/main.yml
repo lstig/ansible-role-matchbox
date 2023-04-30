@@ -8,7 +8,28 @@ matchbox_daemon: matchbox
 matchbox_state: started
 matchbox_enabled: true
 
-matchbox_bin_dir: /usr/local/bin
-matchbox_data_dir: /var/lib/matchbox
-matchbox_assets_dir: "{{ matchbox_data_dir }}/assets"
-matchbox_config_dir: /etc/matchbox
+matchbox_bin_directory: /usr/local/bin
+matchbox_config_path: /etc/matchbox
+
+# Set the logging level
+matchbox_log_level: "info"
+# HTTP listen address
+matchbox_address: "0.0.0.0:8080"
+# RPC listen address
+matchbox_rpc_address: ""
+# Path to static assets
+matchbox_assets_path: "{{ matchbox_data_path }}/assets"
+# Path to data directory
+matchbox_data_path: /var/lib/matchbox
+# Path to the CA verify and authenticate client certificates
+matchbox_ca_file: "{{ matchbox_config_path }}/ca.crt"
+# Path to the server TLS certificate file
+matchbox_cert_file: "{{ matchbox_config_path }}/server.crt"
+# Path to the server TLS key file
+matchbox_key_file: "{{ matchbox_config_path }}/server.key"
+# True to enable HTTPS
+matchbox_web_ssl: false
+# Path to the server TLS certificate file
+matchbox_web_cert_file: "{{ matchbox_config_path }}/server-ssl.crt"
+# Path to the server TLS key file
+matchbox_web_key_file: "{{ matchbox_config_path }}/server-ssl.key"

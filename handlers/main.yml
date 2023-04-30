@@ -1,0 +1,6 @@
+---
+- name: Daemon reload
+  ansible.builtin.systemd:
+    name: "{{ matchbox_daemon }}"
+    state: "{{ matchbox_state }}"
+    daemon_reload: true

@@ -1,14 +1,49 @@
 ---
-- name: Create matchbox systemd service file.
+- name: "Create group: {{ matchbox_group }}"
+  ansible.builtin.group:
+    name: "{{ matchbox_group }}"
+    state: present
+
+- name: "Create user: {{ matchbox_user }}"
+  ansible.builtin.user:
+    name: "{{ matchbox_user }}"
+    group: "{{ matchbox_group }}"
+    state: present
+
+- name: Create matchbox directories
+  ansible.builtin.file:
+    dest: "{{ item }}"
+    state: directory
+    owner: "{{ matchbox_user }}"
+    group: "{{ matchbox_group }}"
+    mode: "0750"
+  loop:
+    - "{{ matchbox_data_path }}"
+    - "{{ matchbox_assets_path }}"
+    - "{{ matchbox_config_path }}"
+
+- name: Create matchbox configuration file
+  ansible.builtin.template:
+    src: sysconfig.j2
+    dest: /etc/sysconfig/matchbox
+    owner: root
+    group: root
+    mode: '0444'
+
+- name: Create matchbox systemd service file
   ansible.builtin.template:
     src: matchbox.service.j2
     dest: /etc/systemd/system/matchbox.service
     owner: root
     group: root
     mode: '0444'
-    validate: /usr/bin/systemd-analyze verify %s
+  notify:
+    - Daemon reload
 
-- name: Ensure matchbox is started and enabled (if configured).
+- name: Flush handlers
+  ansible.builtin.meta: flush_handlers
+
+- name: Ensure matchbox is started and enabled (if configured)
   ansible.builtin.service:
     name: "{{ matchbox_daemon }}"
     state: "{{ matchbox_state }}"
