@@ -1,6 +1,6 @@
 ---
 # This is an example playbook to execute Ansible tests.
-
+# TODO verify web/web+ssl/gRPC
 - name: Verify
   hosts: all
   gather_facts: false
