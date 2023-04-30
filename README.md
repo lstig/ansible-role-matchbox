@@ -8,7 +8,12 @@ Install and manage [matchbox](https://matchbox.psdn.io).
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+This role lies on filters in the `community.general` collection, specifically: `community.general.json_query`. Prior to running ensure you have the following dependencies installed:
+
+```sh
+ansible-galaxy collection install community.general
+pip install --user jmespath
+```
 
 Role Variables
 --------------
