@@ -1,2 +1,13 @@
 ---
-# vars file for matchbox
+__architecture:
+  x86_64: "amd64"
+  aarch64: "arm64"
+  armv6l: "arm"
+  armv7l: "arm"
+
+# split into platform-specific vars files as necessary
+matchbox_bin_directory: /usr/local/bin
+matchbox_config_path: /etc/matchbox
+matchbox_signing_key: 2E3D92BF07D9DDCCB3BAE4A48F515AD1602065C8
+matchbox_github_url: "https://api.github.com/repos/poseidon/matchbox/releases/tags/{{ matchbox_version }}"
+matchbox_package: "matchbox-{{ matchbox_version }}-{{ ansible_system | lower }}-{{ __architecture[ansible_architecture] }}"
