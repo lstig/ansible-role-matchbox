@@ -1,0 +1,64 @@
+---
+- name: install | Fetch matchbox release information from Github
+  ansible.builtin.uri:
+    url: "{{ matchbox_github_url }}"
+    method: GET
+    return_content: true
+    headers:
+      Accept: "application/vnd.github+json"
+      X-GitHub-Api-Version: "2022-11-28"
+  register: _release
+
+- name: install | Parse matchbox release information
+  ansible.builtin.set_fact:
+    _tar: "{{ _release.json | community.general.json_query('assets[?name==`' + matchbox_package + '.tar.gz`].browser_download_url') | first }}"
+    _sig: "{{ _release.json | community.general.json_query('assets[?name==`' + matchbox_package + '.tar.gz.asc`].browser_download_url') | first }}"
+
+- name: install | Create temporary working directory
+  ansible.builtin.tempfile:
+    state: directory
+    suffix: temp
+  register: _workdir
+
+- name: install | Download matchbox release and signature
+  ansible.builtin.get_url:
+    url: "{{ item.url }}"
+    dest: "{{ _workdir.path }}/{{ item.dest }}"
+    mode: "0600"
+  loop:
+    - { url: "{{ _tar }}", dest: "{{ matchbox_package }}.tar.gz" }
+    - { url: "{{ _sig }}", dest: "{{ matchbox_package }}.tar.gz.asc" }
+
+- name: "install | Import singing key - {{ matchbox_signing_key }}"
+  ansible.builtin.command: "gpg --keyserver keyserver.ubuntu.com --recv-key {{ matchbox_signing_key }}"
+  register: _result
+  changed_when: _result.rc != 0
+  environment:
+    GNUPGHOME: "{{ _workdir.path }}"
+
+- name: install | Verify download
+  ansible.builtin.command: "gpg --verify {{ matchbox_package }}.tar.gz.asc {{ matchbox_package }}.tar.gz"
+  register: _result
+  changed_when: _result.rc != 0
+  args:
+    chdir: "{{ _workdir.path }}"
+  environment:
+    GNUPGHOME: "{{ _workdir.path }}"
+
+- name: "install | Extract download"
+  ansible.builtin.unarchive:
+    src: "{{ _workdir.path }}/{{ matchbox_package }}.tar.gz"
+    dest: "{{ _workdir.path }}"
+    remote_src: true
+
+- name: "install | Move matchbox binary to {{ matchbox_bin_directory }}"
+  ansible.builtin.copy:
+    src: "{{ _workdir.path }}/{{ matchbox_package }}/matchbox"
+    dest: "{{ matchbox_bin_directory }}"
+    remote_src: true
+    mode: "0755"
+
+- name: install | Remove temporary working directory
+  ansible.builtin.file:
+    path: "{{ _workdir.path }}"
+    state: absent

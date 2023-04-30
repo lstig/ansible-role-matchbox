@@ -1,10 +1,16 @@
 ---
-- name: "Create group: {{ matchbox_group }}"
+- name: Include variables
+  ansible.builtin.include_vars: main.yml
+
+- name: Install matchbox binary
+  ansible.builtin.include_tasks: install.yml
+
+- name: "Create group - {{ matchbox_group }}"
   ansible.builtin.group:
     name: "{{ matchbox_group }}"
     state: present
 
-- name: "Create user: {{ matchbox_user }}"
+- name: "Create user - {{ matchbox_user }}"
   ansible.builtin.user:
     name: "{{ matchbox_user }}"
     group: "{{ matchbox_group }}"
