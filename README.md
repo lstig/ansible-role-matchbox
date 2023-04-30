@@ -8,7 +8,7 @@ Install and manage [matchbox](https://matchbox.psdn.io).
 Requirements
 ------------
 
-This role lies on filters in the `community.general` collection, specifically: `community.general.json_query`. Prior to running ensure you have the following dependencies installed:
+This role relies on filters in the `community.general` collection, specifically: `community.general.json_query`. Prior to running, ensure you have the following dependencies installed:
 
 ```sh
 ansible-galaxy collection install community.general
