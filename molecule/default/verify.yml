@@ -1,10 +1,17 @@
 ---
 # This is an example playbook to execute Ansible tests.
-# TODO verify web/web+ssl/gRPC
+# TODO verify web+ssl/gRPC
 - name: Verify
   hosts: all
   gather_facts: false
   tasks:
-    - name: Example assertion
+    - name: Test the default matchbox server endpoint
+      ansible.builtin.uri:
+        url: http://localhost:8080
+        method: GET
+        return_content: true
+      register: _response
+
+    - name: Verify response from matchbox
       ansible.builtin.assert:
-        that: true
+        that: "(_response.content | trim) == 'matchbox'"
