@@ -2,8 +2,18 @@
 - name: Include variables
   ansible.builtin.include_vars: main.yml
 
+- name: Check matchbox version
+  ansible.builtin.command: "{{ matchbox_bin_directory }}/matchbox --version"
+  register: _result
+  changed_when: _result.rc != 0
+  # 'Errno 2' is 'file not found' - which is expected if matchbox isn't installed
+  failed_when: >
+    (_result.rc != 0) and
+    ('Errno 2' not in _result.msg)
+
 - name: Install matchbox binary
   ansible.builtin.include_tasks: install.yml
+  when: _result.rc != 0 or _result.stdout != matchbox_version
 
 - name: "Create group - {{ matchbox_group }}"
   ansible.builtin.group:
