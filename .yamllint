@@ -7,8 +7,8 @@ rules:
   brackets: {max-spaces-inside: 1, level: error}
   colons: {max-spaces-after: -1, level: error}
   commas: {max-spaces-after: -1, level: error}
-  comments: disable
   comments-indentation: disable
+  comments: disable
   document-start: disable
   empty-lines: {max: 3, level: error}
   hyphens: {level: error}
@@ -17,5 +17,6 @@ rules:
   line-length: disable
   new-line-at-end-of-file: disable
   new-lines: {type: unix}
+  quoted-strings: {quote-type: double, required: true}
   trailing-spaces: disable
   truthy: disable
