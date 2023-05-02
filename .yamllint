@@ -17,6 +17,6 @@ rules:
   line-length: disable
   new-line-at-end-of-file: disable
   new-lines: {type: unix}
-  quoted-strings: {quote-type: double, required: true}
+  quoted-strings: {quote-type: double, required: only-when-needed}
   trailing-spaces: disable
   truthy: disable
