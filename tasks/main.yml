@@ -15,12 +15,12 @@
   ansible.builtin.include_tasks: install.yml
   when: _result.rc != 0 or _result.stdout != matchbox_version
 
-- name: "Create group - {{ matchbox_group }}"
+- name: Create group - {{ matchbox_group }}
   ansible.builtin.group:
     name: "{{ matchbox_group }}"
     state: present
 
-- name: "Create user - {{ matchbox_user }}"
+- name: Create user - {{ matchbox_user }}
   ansible.builtin.user:
     name: "{{ matchbox_user }}"
     group: "{{ matchbox_group }}"
@@ -44,7 +44,7 @@
     dest: /etc/sysconfig/matchbox
     owner: root
     group: root
-    mode: '0444'
+    mode: "0444"
 
 - name: Create matchbox systemd service file
   ansible.builtin.template:
@@ -52,7 +52,7 @@
     dest: /etc/systemd/system/matchbox.service
     owner: root
     group: root
-    mode: '0444'
+    mode: "0444"
   notify:
     - Daemon reload
 

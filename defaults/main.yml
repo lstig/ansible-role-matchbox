@@ -2,16 +2,16 @@
 matchbox_user: matchbox
 matchbox_group: matchbox
 
-matchbox_version: "v0.10.0"
+matchbox_version: v0.10.0
 
 matchbox_daemon: matchbox
 matchbox_state: started
 matchbox_enabled: true
 
 # Set the logging level
-matchbox_log_level: "info"
+matchbox_log_level: info
 # HTTP listen address
-matchbox_address: "0.0.0.0:8080"
+matchbox_address: 0.0.0.0:8080
 # RPC listen address
 matchbox_rpc_address: ""
 # Path to data directory
