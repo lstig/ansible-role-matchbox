@@ -5,13 +5,20 @@
   hosts: all
   gather_facts: false
   tasks:
-    - name: Test the default matchbox server endpoint
+    - name: Initialize role
+      ansible.builtin.include_role:
+        name: matchbox
+        tasks_from: init
+        public: true
+
+    - name: "Test {{ matchbox_web_ssl | ternary('https', 'http') }}://{{ matchbox_address }}"
       ansible.builtin.uri:
-        url: http://localhost:8080
+        url: "{{ matchbox_web_ssl | ternary('https', 'http') }}://{{ matchbox_address }}"
         method: GET
+        validate_certs: false
         return_content: true
       register: _response
 
-    - name: Verify response from matchbox
+    - name: Verify server response
       ansible.builtin.assert:
         that: "(_response.content | trim) == 'matchbox'"
