@@ -5,7 +5,7 @@ galaxy_info:
   role_name: matchbox
   namespace: lstig
   author: Luke Stigdon
-  description: "Matchbox is a service that matches bare-metal machines to profiles that PXE boot and provision clusters."
+  description: "Network boot and provision Fedora CoreOS and Flatcar Linux clusters."
   license: MIT
   min_ansible_version: "2.10"
   # https://galaxy.ansible.com/api/v1/platforms/
