@@ -44,6 +44,9 @@ jobs:
         distro:
           - rockylinux8
           - rockylinux9
+          - ubuntu1804
+          - ubuntu2004
+          - ubuntu2204
 
     steps:
       - name: Check out the codebase.
