@@ -11,7 +11,7 @@
         tasks_from: init
         public: true
 
-    - name: Test {{ matchbox_web_ssl | ternary('https', 'http') }}://{{ matchbox_address }}
+    - name: Test matchbox endpoint
       ansible.builtin.uri:
         url: "{{ matchbox_web_ssl | ternary('https', 'http') }}://{{ matchbox_address }}"
         method: GET
