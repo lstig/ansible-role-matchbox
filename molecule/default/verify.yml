@@ -7,7 +7,7 @@
   tasks:
     - name: Initialize role
       ansible.builtin.include_role:
-        name: matchbox
+        name: lstig.matchbox
         tasks_from: init
         public: true
 
