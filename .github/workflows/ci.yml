@@ -33,7 +33,9 @@ jobs:
 
       - name: Lint code.
         run: |
+          yamllint --version
           yamllint .
+          ansible-lint --version
           ansible-lint
 
   molecule:
