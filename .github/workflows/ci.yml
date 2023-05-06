@@ -49,7 +49,6 @@ jobs:
           - fedora36
           - fedora37
           - fedora38
-          - ubuntu1604
           - ubuntu1804
           - ubuntu2004
           - ubuntu2204
