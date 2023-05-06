@@ -19,6 +19,15 @@ galaxy_info:
         - "36"
         - "37"
         - "38"
+    - name: Debian
+      versions:
+        - buster   # 10
+        - bullseye # 11
+    - name: Ubuntu
+      versions:
+        - bionic # 18.04
+        - focal  # 20.04
+        - jammy  # 22.04
   galaxy_tags:
     - matchbox
     - pxe
