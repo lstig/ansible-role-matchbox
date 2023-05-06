@@ -14,6 +14,11 @@ galaxy_info:
       versions:
         - "8"
         - "9"
+    - name: Fedora
+      versions:
+        - "36"
+        - "37"
+        - "38"
   galaxy_tags:
     - matchbox
     - pxe
