@@ -9,5 +9,7 @@ __architecture:
 matchbox_bin_directory: /usr/local/bin
 matchbox_config_path: /etc/matchbox
 matchbox_signing_key: 2E3D92BF07D9DDCCB3BAE4A48F515AD1602065C8
-matchbox_github_url: https://api.github.com/repos/poseidon/matchbox/releases/tags/{{ matchbox_version }}
-matchbox_package: matchbox-{{ matchbox_version }}-{{ ansible_system | lower }}-{{ __architecture[ansible_architecture] }}
+matchbox_release_name: matchbox-{{ matchbox_version }}-{{ ansible_system | lower }}-{{ __architecture[ansible_architecture] }}
+matchbox_tarball: "{{ matchbox_release_name }}.tar.gz"
+matchbox_signature: "{{ matchbox_release_name }}.tar.gz.asc"
+matchbox_download_url: https://github.com/poseidon/matchbox/releases/download/{{ matchbox_version }}
