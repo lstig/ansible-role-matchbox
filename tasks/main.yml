@@ -40,8 +40,8 @@
 
 - name: Create matchbox configuration file
   ansible.builtin.template:
-    src: sysconfig.j2
-    dest: /etc/sysconfig/matchbox
+    src: matchbox.conf.j2
+    dest: "{{ matchbox_config_path }}/matchbox.conf"
     owner: root
     group: root
     mode: "0444"

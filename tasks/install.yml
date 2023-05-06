@@ -29,6 +29,13 @@
     - { url: "{{ _tar }}", dest: "{{ matchbox_package }}.tar.gz" }
     - { url: "{{ _sig }}", dest: "{{ matchbox_package }}.tar.gz.asc" }
 
+- name: install | Install GnuPG
+  ansible.builtin.apt:
+    name: gnupg
+    state: present
+    update_cache: true
+  when: ansible_distribution in ['Ubuntu', 'Debian']
+
 - name: install | Import signing key - {{ matchbox_signing_key }}
   ansible.builtin.command: gpg --keyserver keyserver.ubuntu.com --recv-key {{ matchbox_signing_key }}
   register: _result

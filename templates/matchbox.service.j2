@@ -5,7 +5,7 @@ Documentation=https://github.com/poseidon/matchbox
 [Service]
 User={{ matchbox_user }}
 Group={{ matchbox_group }}
-EnvironmentFile=-/etc/sysconfig/matchbox
+EnvironmentFile={{ matchbox_config_path }}/matchbox.conf
 ExecStart={{ matchbox_bin_directory }}/matchbox
 
 # systemd.exec
