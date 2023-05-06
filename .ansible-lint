@@ -1,3 +1,6 @@
 ---
 enable_list:
   - name[prefix] # opt-in
+
+skip_list:
+  - schema[meta] # meta schema missing Fedora 38 in 6.15.0
