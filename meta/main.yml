@@ -16,7 +16,6 @@ galaxy_info:
         - "9"
     - name: Fedora
       versions:
-        - "37"
         - "38"
         - "39"
     - name: Debian
@@ -25,9 +24,8 @@ galaxy_info:
         - bookworm # 12
     - name: Ubuntu
       versions:
-        - bionic # 18.04
-        - focal  # 20.04
-        - jammy  # 22.04
+        - focal # 20.04
+        - jammy # 22.04
   galaxy_tags:
     - matchbox
     - pxe
