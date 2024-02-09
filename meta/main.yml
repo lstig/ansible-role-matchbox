@@ -16,13 +16,13 @@ galaxy_info:
         - "9"
     - name: Fedora
       versions:
-        - "36"
         - "37"
         - "38"
+        - "39"
     - name: Debian
       versions:
-        - buster   # 10
         - bullseye # 11
+        - bookworm # 12
     - name: Ubuntu
       versions:
         - bionic # 18.04
