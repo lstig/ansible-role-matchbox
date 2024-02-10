@@ -1,5 +1,0 @@
-- name: Debian | Install GnuPG
-  ansible.builtin.apt:
-    name: gnupg
-    state: present
-    update_cache: true

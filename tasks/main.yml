@@ -2,18 +2,6 @@
 - name: Include variables
   ansible.builtin.include_vars: main.yml
 
-- name: Distribution specific setup
-  ansible.builtin.include_tasks: "{{ item }}"
-  with_first_found:
-    - files:
-        - setup/{{ ansible_facts['distribution'] }}-{{ ansible_facts['distribution_version'] }}.yml
-        - setup/{{ ansible_facts['distribution'] }}-{{ ansible_facts['distribution_major_version'] }}.yml
-        - setup/{{ ansible_facts['distribution'] }}.yml
-        - setup/{{ ansible_facts['os_family'] }}-{{ ansible_facts['distribution_version'] }}.yml
-        - setup/{{ ansible_facts['os_family'] }}-{{ ansible_facts['distribution_major_version'] }}.yml
-        - setup/{{ ansible_facts['os_family'] }}.yml
-      skip: true
-
 - name: Check matchbox version
   ansible.builtin.command: "{{ matchbox_bin_directory }}/matchbox --version"
   register: _result
