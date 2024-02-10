@@ -1,5 +1,5 @@
 ---
 roles:
-  - lstig.gpg
+  - name: lstig.gpg
 collections:
-  - community.general
+  - name: community.general

@@ -8,9 +8,9 @@ Install and manage [matchbox](https://matchbox.psdn.io).
 Requirements
 ------------
 
-- `gnupg2` should be installed working on the remote machine (it can be installed with the `lstig.gpg` role).
+- `gnupg2` should be installed and working on the remote machine (it can be installed with the `lstig.gpg` role).
 - `community.general.json_query` should be available on your controller ( part of the `community.general` collection).
-- `jmespath` in order to use the `json_query` on your controller:
+- `jmespath` in order to use the `json_query` lookup plugin on your controller:
 
 ```sh
 pip install --user jmespath
