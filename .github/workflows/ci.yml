@@ -30,7 +30,9 @@ jobs:
           python-version: 3.x
 
       - name: Install test dependencies.
-        run: pip3 install yamllint ansible-lint
+        run: |
+          pip3 install ansible ansible-lint yamllint
+          ansible-galaxy install -r "$(find . -name requirements.yml)"
 
       - name: Lint code.
         run: |
