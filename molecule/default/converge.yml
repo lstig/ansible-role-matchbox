@@ -2,7 +2,6 @@
 - name: Converge
   hosts: all
   become: yes
-  tasks:
-    - name: Include matchbox role
-      ansible.builtin.include_role:
-        name: lstig.matchbox
+  roles:
+    - lstig.gpg
+    - lstig.matchbox

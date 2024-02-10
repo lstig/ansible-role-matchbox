@@ -8,10 +8,11 @@ Install and manage [matchbox](https://matchbox.psdn.io).
 Requirements
 ------------
 
-This role relies on filters in the `community.general` collection, specifically: `community.general.json_query`. Prior to running, ensure you have the following dependencies installed:
+- `gnupg2` should be installed working on the remote machine (it can be installed with the `lstig.gpg` role).
+- `community.general.json_query` should be available on your controller ( part of the `community.general` collection).
+- `jmespath` in order to use the `json_query` on your controller:
 
 ```sh
-ansible-galaxy collection install community.general
 pip install --user jmespath
 ```
 

@@ -1,6 +1,5 @@
 ---
-dependencies:
-  - { role: lstig.gpg }
+dependencies: []
 
 galaxy_info:
   role_name: matchbox
